@@ -1,0 +1,10 @@
+{
+    "databaseName": "ContactTracerDataBase",
+    "databaseServer": "localhost",
+    "databasePort": 28015,
+    "databaseTables": [
+        "Admin",
+        "Entry",
+        "History"
+    ]
+}

@@ -1,0 +1,13 @@
+.form{
+    display: grid;
+    max-width: 25em;
+    margin: auto;
+}
+
+.error{
+    color: rgb(255, 188, 188);
+    margin-bottom: 1em;
+    display: grid;
+    justify-content: center;
+    justify-self: center;
+}

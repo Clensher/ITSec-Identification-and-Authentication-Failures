@@ -1,0 +1,48 @@
+<div class="text">
+    <h1><strong>Edit Entry</strong></h1>
+</div>
+
+<div class="form">
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput color="accent" #firstname required value="{{entry.firstname}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput color="accent" #lastname required value="{{entry.lastname}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Phonenumber</mat-label>
+        <input matInput color="accent" #phonenumber required value="{{entry.phonenumber}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput color="accent" #email required value="{{entry.email}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Company</mat-label>
+        <input matInput color="accent" #company value="{{entry.company}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Street</mat-label>
+        <input matInput color="accent" #street required value="{{entry.street}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Postalcode</mat-label>
+        <input matInput color="accent" #postalcode required value="{{entry.postalcode}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput color="accent" #city required value="{{entry.city}}">
+    </mat-form-field>
+
+    <button id="button" mat-raised-button color="primary" (click)="editEntry(firstname.value, lastname.value, phonenumber.value, email.value, company.value, street.value, postalcode.value, city.value)">Save Changes</button>
+    <button id="deleteButton" mat-raised-button color="primary" (click)="deleteEntry()">Delete</button>
+</div>

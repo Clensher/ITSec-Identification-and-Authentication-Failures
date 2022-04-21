@@ -1,0 +1,57 @@
+table {
+    width: 100%;
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: rgb(116, 116, 116);
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #5e5e5e;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+
+.table, tr, th{
+  background: rgba(48, 48, 48, 0.774);
+}
+
+.table{
+  box-shadow: 0em 0em 0.8em rgba(0, 0, 0, 0.5);
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
+
+.id{
+  margin: 1em;
+}

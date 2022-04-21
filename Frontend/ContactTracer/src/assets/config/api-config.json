@@ -1,0 +1,13 @@
+{
+    "base": "http://localhost:9999",
+    "checkin": "/entry/checkin/",
+    "admincheckin": "/entry/checkin/admin/",
+    "entries": "/entry/",
+    "entryinfo": "/entry/info/",
+    "checkout": "/entry/checkout/",
+    "adminLogin": "/admin/",
+    "adminRegister": "/admin/",
+    "editadmin": "/admin/",
+    "editEntry": "/entry/",
+    "deleteEntry": "/entry/"
+}

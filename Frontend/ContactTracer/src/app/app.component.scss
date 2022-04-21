@@ -1,0 +1,64 @@
+body {
+    font-size: 1.2em;
+    color: #c5c5c5;
+    overflow-x: hidden;
+    background-image: linear-gradient(45deg, #ff6428, #9e3a9c);
+    background-attachment: fixed;
+}
+
+.topnav {
+    overflow: hidden;
+    display: flex;
+    position: fixed !important;
+    align-items: center;
+    background-color: rgb(49, 49, 49);
+    box-shadow: 0em 0em 0.8em rgba(0, 0, 0, 0.5);
+    width: 100%;
+    z-index: 1;
+}
+
+.topnav h1{
+    margin: 1em;
+}
+
+.grid {
+    margin: auto;
+    max-width: 80em;
+    padding-top: 8em;
+    padding-bottom: 4em;
+}
+
+.box{
+    padding: 1em;
+}
+
+#button {
+    background-color: #4bc491;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+#homeButton{
+    background-color: #242424;
+    padding-left: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-right: 2em;
+}
+
+mat-form-field{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    color: rgb(228, 228, 228)
+}
+
+.snackbar{
+    background-color: rgb(39, 39, 39);
+    color: rgb(228, 228, 228);
+}

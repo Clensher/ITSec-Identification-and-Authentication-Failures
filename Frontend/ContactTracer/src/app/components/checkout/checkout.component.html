@@ -1,0 +1,13 @@
+<div class="text">
+    <h1><strong>Checkout</strong></h1>
+</div>
+
+<div class="form">
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>ID</mat-label>
+        <input matInput color="accent" #id required>
+    </mat-form-field>
+
+    <button id="button" mat-raised-button color="primary" (click)="checkout(id.value)">Checkout</button>
+</div>
+  

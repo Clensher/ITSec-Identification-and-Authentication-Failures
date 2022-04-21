@@ -1,0 +1,35 @@
+<div class="text">
+    <h1><strong>Edit Account</strong></h1>
+</div>
+
+<div class="form">
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput color="accent" #firstnameInput required value="{{firstname}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput color="accent" #lastnameInput required value="{{lastname}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput color="accent" #emailInput required value="{{email}}">
+    </mat-form-field>
+
+    <mat-form-field color="primary" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput color="accent" #usernameInput required value="{{username}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" #passwordInput required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <button id="button" mat-raised-button color="primary" (click)="editAdmin(firstnameInput.value, lastnameInput.value, emailInput.value, usernameInput.value, passwordInput.value)">Save Changes</button>
+</div>
