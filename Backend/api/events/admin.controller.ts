@@ -3,22 +3,35 @@ import { inject, injectable } from 'inversify';
 import { controller, httpGet, httpPost, httpPut, interfaces, requestParam } from 'inversify-express-utils';
 import { DatabaseService } from '../../core/services/database.service';
 import { LoggerService } from '../../core/services/logger.service';
+import { PasswordService } from '../../core/services/password.service';
 
 @controller('/admin')
 @injectable()
 export class AdminController implements interfaces.Controller {
   constructor(
-    @inject(DatabaseService.name) private databaseService: DatabaseService, @inject(LoggerService.name) private loggerService: LoggerService
+    @inject(DatabaseService.name) private databaseService: DatabaseService, @inject(LoggerService.name) private loggerService: LoggerService, @inject(PasswordService.name) private passwordService: PasswordService,
   ) {}
 
   @httpPost('/:firstname&:lastname&:email&:username&:password')
   public createAdmin(request: Request, response: Response): void {
-    this.databaseService.createAdmin(request.params.firstname, request.params.lastname, request.params.email, request.params.username, request.params.password)
-    .then((result) => {
-      this.loggerService.info('admin registered');
-      this.databaseService.createHistoryEntry(request.params.username, 'new admin created');
+    let checkPassword = this.passwordService.checkPasswordSecurity(request.params.password);
+    this.loggerService.info("Check of password resulted in: " + checkPassword);
+    if (checkPassword){
+      this.databaseService.createAdmin(request.params.firstname, request.params.lastname, request.params.email, request.params.username, request.params.password)
+      .then((result) => {
+        this.loggerService.info('admin registered');
+        this.databaseService.createHistoryEntry(request.params.username, 'new admin created');
+        response.json(result);
+      });
+    }
+    else {
+      this.loggerService.info('failed to register admin because of secure password policy violations.');
+      let result = { errors: 1,
+                     errorSource: "password",
+                     message: "Password violates the password security policies.",
+                     passwordPolicyDescription: this.passwordService.getPolicyDescription() };
       response.json(result);
-    });
+    }
   }
 
   @httpPut('/:username&:password&:firstname&:lastname&:email&:newusername&:newpassword')
