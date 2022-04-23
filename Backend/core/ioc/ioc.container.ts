@@ -5,6 +5,7 @@ import { LoggerService } from '../services/logger.service';
 import { DatabaseService } from '../services/database.service';
 import { AdminController } from '../../api/events/admin.controller';
 import { EntryController } from '../../api/events/entry.controller';
+import { PasswordService } from '../services/password.service';
 
 export class IoContainer {
   private container = new Container();
@@ -36,6 +37,10 @@ export class IoContainer {
       this.container
       .bind<DatabaseService>(DatabaseService.name)
       .to(DatabaseService)
+      .inSingletonScope();
+      this.container
+      .bind<PasswordService>(PasswordService.name)
+      .to(PasswordService)
       .inSingletonScope();
   }
 }

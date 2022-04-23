@@ -43,10 +43,18 @@ export class RegisterAdminComponent implements OnInit {
     this.httpClient.post<any>(url, params)
     .subscribe({
       next: (response: any) => {
-        this.router.navigateByUrl('adminhome', {state: {'username': username, 'password': password}})
+        if (response.errors == 0){
+          this.logger.log('admin registered');
+          this.router.navigateByUrl('adminhome', {state: {'username': username, 'password': password}});
+        }
+        else if (response.errorSource == "password"){
+          this._snackBar.open(response.passwordPolicyDescription, 'ERROR', {
+            duration: 4500,
+            panelClass: ['snackbar']
+          });
+        }
       },
-      error: (error) => this.logger.log('Something went wrong'),
-      complete: () => this.logger.log('admin registered')
+      error: (error) => this.logger.log('Something went wrong')
     })
   }
 }
