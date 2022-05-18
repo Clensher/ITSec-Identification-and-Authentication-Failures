@@ -16,5 +16,5 @@
         </button>
     </mat-form-field>
 
-    <button id="button" mat-raised-button color="primary" (click)="loginAdmin(username.value, password.value)">Login</button>
+    <button [disabled]="maxTrysReached()" id="button" mat-raised-button color="primary" (click)="loginAdmin(username.value, password.value)">Login</button>
 </div>
