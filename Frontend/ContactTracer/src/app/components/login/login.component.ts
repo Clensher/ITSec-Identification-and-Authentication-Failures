@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import ApiConfig from '../../../assets/config/api-config.json'
 import { LoggerService } from '../../../assets/services/logger.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {LoginTrysCounterService} from "../../../assets/services/login-trys-counter.service";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   errormsg = '';
   hide = true;
 
-  constructor(private httpClient: HttpClient, private router: Router, private logger: LoggerService, private _snackBar: MatSnackBar) { }
+  constructor(private counterService: LoginTrysCounterService, private httpClient: HttpClient, private router: Router, private logger: LoggerService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
             duration: 2500,
             panelClass: ['snackbar']
           });
+          this.counterService.increase();
         }
         else{
           this.router.navigateByUrl('adminhome', {state: {'username': username, 'password': password}})
@@ -49,5 +51,9 @@ export class LoginComponent implements OnInit {
       error: (error) => this.logger.log('Something went wrong'),
       complete: () => this.logger.log('admin tried to login')
     })
+  }
+
+  maxTrysReached() : boolean{
+    return this.counterService.maximumReached();
   }
 }

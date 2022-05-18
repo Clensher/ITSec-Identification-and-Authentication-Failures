@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { QRCodeModule } from 'angularx-qrcode';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { QRCodeModule } from 'angularx-qrcode';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    QRCodeModule
+    QRCodeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
