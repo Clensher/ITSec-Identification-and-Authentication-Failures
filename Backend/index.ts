@@ -3,12 +3,14 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import { IoContainer } from './core/ioc/ioc.container';
 import { LoggerService } from './core/services/logger.service';
 import { DatabaseService } from './core/services/database.service';
+import { PasswordPolicyEnforcerService } from '../../core/services/password-policy-enforcer.service';
 
 const container = new IoContainer();
 container.init();
 
 const logger = container.getContainer().resolve(LoggerService);
 const databseService = container.getContainer().resolve(DatabaseService);
+const passwordPolicyEnforcerService = container.getContainer().resolve(PasswordPolicyEnforcerService);
 
 const server = new InversifyExpressServer(container.getContainer());
 
@@ -26,4 +28,3 @@ databseService.initialize().then(()=>{
     logger.error(error, 'Error while starting express server');
     process.exit(-1);
 });
-
